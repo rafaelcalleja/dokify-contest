@@ -1,0 +1,53 @@
+<html>
+<body>
+<script>
+
+    var data = [
+        [ "nombre", "apellidos","dni" ],
+        ["foo1", "bar1", "foobar1"],
+        ["foo2", "bar2", "foobar2"],
+        ["foo3", "bar3", "foobar3"],
+        ["foo4", "bar4", "foobar4"],
+        ["foo5", "bar5", "foobar5"],
+        ["foo6", "bar6", "foobar6"],
+        ["foo7", "bar7", "foobar7"],
+        ["foo8", "bar8", "foobar8"],
+        ["foo9", "bar9", "foobar9"],
+        ["foo1", "bar1", "foobar1"],
+        ["foo2", "bar2", "foobar2"],
+        ["foo3", "bar3", "foobar3"],
+        ["foo4", "bar4", "foobar4"],
+        ["foo5", "bar5", "foobar5"],
+        ["foo6", "bar6", "foobar6"],
+        ["foo7", "bar7", "foobar7"],
+        ["foo8", "bar8", "foobar8"],
+        ["foo9", "bar9", "foobar9"],
+    ];
+
+    var body = document.getElementsByTagName("BODY")[0];
+    var table = document.createElement("TABLE");
+
+
+
+    data.slice(1).forEach(function (element, index, array) {
+
+        var row = table.insertRow(index);
+
+        array[index].forEach(function(el, ind, arr){
+            var cell = row.insertCell(ind);
+            cell.innerHTML = array[index][ind];
+        });
+
+    });
+
+    var header = table.createTHead();
+    var row = header.insertRow(0);
+    data[0].forEach(function (element, index, array) {
+        var cell = row.insertCell(index);
+        cell.innerHTML = "<b>"+array[index]+"</b>";
+    });
+
+    body.appendChild(table);
+</script>
+</body>
+</html>
