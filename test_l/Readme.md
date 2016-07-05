@@ -49,11 +49,7 @@ class model
    }
 
    private function setDatetime($date){
-        if (! Assertion::date($date, 'Y-m-d H:i:s') )
-        {
-            throw new \InvalidArgumentException("Invalid Date format");
-        }
-
+        Assertion::date($date, 'Y-m-d H:i:s') )
         $this->dateTime = $date;
    }
 
