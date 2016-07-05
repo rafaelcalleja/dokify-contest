@@ -1,0 +1,20 @@
+Dokify\Domain\Model\Employee\Employee:
+  type: entity
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  table: employee
+  repositoryClass: Dokify\Infrastructure\Domain\Model\Employee\DoctrineEmployeeRepository
+  fields:
+    fullname:
+      type: string
+      unique: true
+    created_at:
+      type: datetime
+  oneToMany:
+    documents:
+      targetEntity: Dokify\Domain\Model\Documents\Documents
+      mappedBy: documents
+      cascade: ["persist", "merge"]

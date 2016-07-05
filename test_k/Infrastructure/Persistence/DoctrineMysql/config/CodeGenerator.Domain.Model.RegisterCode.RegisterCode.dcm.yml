@@ -1,0 +1,30 @@
+CodeGenerator\Domain\Model\RegisterCode\RegisterCode:
+  type: entity
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  table: app_register_code
+  repositoryClass: CodeGenerator\Infrastructure\Domain\Model\RegisterCode\DoctrineRegisterCodeRepository
+  fields:
+    code:
+      type: string
+      unique: true
+    expire_at:
+      type: integer
+    valid_until:
+      type: datetime
+      nullable: true
+    created_at:
+      type: datetime
+  oneToMany:
+    coupons:
+      targetEntity: CodeGenerator\Domain\Model\Coupon\Coupon
+      mappedBy: register_code
+      cascade: ["persist", "merge"]
+    user_code:
+      targetEntity: CodeGenerator\Domain\Model\UserCode\UserCode
+      mappedBy: register_code
+      cascade: ["all"]
+

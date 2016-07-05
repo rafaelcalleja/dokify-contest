@@ -1,0 +1,41 @@
+CodeGenerator\Domain\Model\Coupon\Coupon:
+  type: entity
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  table: app_coupon
+  repositoryClass: CodeGenerator\Infrastructure\Domain\Model\Coupon\DoctrineCouponRepository
+  fields:
+    code:
+      type: string
+      unique: true
+    created_at:
+      type: datetime
+  manyToOne:
+    register_code:
+      targetEntity: CodeGenerator\Domain\Model\RegisterCode\RegisterCode
+      inversedBy: coupons
+      joinColumn:
+        name: register_code_id
+        referencedColumnName: id
+        onDelete: SET NULL
+        onUpdate: CASCADE
+        nullable: true
+      cascade: ["persist", "merge"]
+    type_coupon:
+      targetEntity: CodeGenerator\Domain\Model\TypeCoupon\TypeCoupon
+      inversedBy: coupon
+      joinColumn:
+        name: type_coupon_id
+        referencedColumnName: id
+        onDelete: CASCADE
+        onUpdate: CASCADE
+        nullable: false
+      cascade: ["persist", "merge"]
+  oneToOne:
+    user_code:
+      targetEntity: CodeGenerator\Domain\Model\UserCode\UserCode
+      mappedBy: coupon
+      cascade: ["persist", "merge"]
