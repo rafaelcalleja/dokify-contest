@@ -1,0 +1,44 @@
+<html>
+<head>
+    <script   src="https://code.jquery.com/jquery-3.0.0.min.js"   integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0="   crossorigin="anonymous"></script>
+</head>
+
+<style>
+    body {margin:10px}
+    h1 {font-size:20px}
+</style>
+<body>
+<h1>navigate <span></span></h1>
+<h2>Página: <span>/</span></h2>
+<ul id="menu-nav">
+    <li><a href="/page-1/" title="Página 1">Página 1</a></li>
+    <li><a href="/page-2/" title="Página 2">Página 2</a></li>
+    <li><a href="/page-3/" title="Página 3">Página 3</a></li>
+</ul>
+</body>
+
+<script>
+
+    var setCurrentPage = function(url) {
+        $('h2 span').html(url || "/");
+        $("#menu-nav a[href='" + url + "']").fadeTo(500, 0.3);
+    };
+
+    $('#menu-nav a').click(function(e){
+        e.preventDefault();
+        var targetUrl = $(this).attr('href'),
+                targetTitle = $(this).attr('title');
+
+        $("#menu-nav a[href='" + window.location.pathname + "']").fadeTo(500, 1.0);
+
+        window.history.pushState({url: "" + targetUrl + ""}, targetTitle, targetUrl);
+        setCurrentPage(targetUrl);
+    });
+
+    window.onpopstate = function(e) {
+        $("#menu-nav a").fadeTo('fast', 1.0);
+        setCurrentPage(e.state ? e.state.url : null);
+    };
+
+</script>
+</html>
