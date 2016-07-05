@@ -20,10 +20,10 @@ class model
 }
 ```
 
-confuramos las constrains es un archivo yml por ejemplo, especificando el model , la constrait su configuracion.
-Creamos el validador con la configuracion del archivo yml creado.
+configuramos las constraints en un archivo yml, especificando el model , la constraint y su configuracion.
+Creamos una nueva instancia de el validador con la configuración del archivo yml generado.
 
-creamos una nueva instancia del modelo con el valor post necesario;
+Creamos una nueva instancia del modelo con el valor post y validamos el modelo.
 
 ```php
 $object = new model($_POST['datetime']);
