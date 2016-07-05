@@ -1,0 +1,15 @@
+<html>
+<head>
+    <script   src="https://code.jquery.com/jquery-3.0.0.min.js"   integrity="sha256-JmvOoLtYsmqlsWxa7mDSLMwa6dZ9rrIdtrrVYRnDRH0="   crossorigin="anonymous"></script>
+</head>
+<body>
+<div id="message"><div><span>Welcome</span> <span>user</span></div><button>Ok</button></div>
+<script>
+    $(function() {
+        $( "#message" ).click(function() {
+            $(this).find("div > span").eq(0).html('Bienvenido.')
+        });
+    });
+</script>
+</body>
+</html>
